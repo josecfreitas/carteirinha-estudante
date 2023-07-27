@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Carteirinha de Estudante - José Carlos de Freitas - FBR',
   description: 'Carteirinha de Estudante - José Carlos de Freitas - FBR',
-  viewport: 'width=550',
+  viewport: 'width=600',
 }
 
 export default function RootLayout({

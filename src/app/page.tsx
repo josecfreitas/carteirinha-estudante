@@ -5,7 +5,7 @@ import { twMerge } from 'tailwind-merge'
 
 export default function Home() {
   return (
-    <main>
+    <main className="px-4">
       <h1 className="text-[#073f60] text-center text-xl font-bold my-6">
         Carterinha de Estudante
       </h1>
