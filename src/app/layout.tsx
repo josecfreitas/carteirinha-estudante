@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Carteirinha de Estudante - José Carlos de Freitas - FBR',
   description: 'Carteirinha de Estudante - José Carlos de Freitas - FBR',
+  viewport: 'width=550',
 }
 
 export default function RootLayout({
@@ -16,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} bg-orange-50`}>{children}</body>
     </html>
   )
 }
