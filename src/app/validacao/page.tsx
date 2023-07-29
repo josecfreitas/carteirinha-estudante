@@ -16,7 +16,12 @@ export default function Validacao({ searchParams }: PageProps) {
       <h1 className="text-[#073f60] text-center text-2xl font-bold my-6">
         Carterinha de Estudante
       </h1>
-      <Carteirinha cloaked />
+
+      {isValid ? (
+        <Carteirinha cloaked />
+      ) : (
+        <p className="text-center">Carteirinha de estudante não encontrada!</p>
+      )}
 
       <div className="text-center">
         <h2 className="text-[#073f60] text-xl font-bold mt-8 mb-4">
