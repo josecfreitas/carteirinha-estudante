@@ -1,4 +1,4 @@
-import { format, lastDayOfMonth } from 'date-fns'
+import { addMonths, format, lastDayOfMonth } from 'date-fns'
 import Image from 'next/image'
 import { ComponentProps } from 'react'
 import { twMerge } from 'tailwind-merge'
@@ -61,7 +61,10 @@ export const Carteirinha = ({ cloaked }: CarteirinhaProps) => {
           <Info label="Matrícula" value={cloaked ? '12****18' : '12326518'} />
           <Info
             label="Validade"
-            value={format(lastDayOfMonth(new Date()), 'dd/MM/yyyy')}
+            value={format(
+              lastDayOfMonth(addMonths(new Date(), 1)),
+              'dd/MM/yyyy',
+            )}
           />
         </ul>
       </div>
