@@ -3,6 +3,8 @@ import Image from 'next/image'
 import { ComponentProps } from 'react'
 import { twMerge } from 'tailwind-merge'
 
+export const revalidate = 60 * 60 // 1 hour
+
 interface CarteirinhaProps {
   cloaked?: boolean
 }
@@ -36,6 +38,10 @@ export const Carteirinha = ({ cloaked }: CarteirinhaProps) => {
             height={200}
             alt="Logo da Faculdade de Brasília"
           />
+
+          <div className="text-center text-xs text-gray-200 mt-1">
+            {format(new Date(), 'dd/MM/yyyy')}
+          </div>
         </div>
         <ul className="grid grid-cols-2 gap-2">
           <Info
