@@ -37,8 +37,8 @@ export const Carteirinha = ({ cloaked }: CarteirinhaProps) => {
             alt="Logo da Faculdade de Brasília"
           />
 
-          <div className="text-center text-xs text-gray-200 mt-1">
-            {format(new Date(), 'dd/MM/yyyy')}
+          <div className="text-center text-xs text-gray-100 mt-1">
+            {format(new Date(), 'dd/MM/yyyy HH:mm')}
           </div>
         </div>
         <ul className="grid grid-cols-2 gap-2">
