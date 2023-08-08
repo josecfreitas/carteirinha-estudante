@@ -3,8 +3,6 @@ import Image from 'next/image'
 import { ComponentProps } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-export const revalidate = 60 * 60 // 1 hour
-
 interface CarteirinhaProps {
   cloaked?: boolean
 }

@@ -1,6 +1,8 @@
 import { Carteirinha } from '../components/carteirinha'
 import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa'
 
+export const revalidate = 60 * 60 // 1 hour
+
 interface PageProps {
   searchParams?: {
     'codigo-verificacao'?: string
