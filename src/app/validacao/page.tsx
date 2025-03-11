@@ -1,7 +1,8 @@
 import { Carteirinha } from '../components/carteirinha'
 import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa'
 
-export const fetchCache = 'force-no-store'
+// no-cache
+export const revalidate = 0
 
 interface PageProps {
   searchParams?: {
