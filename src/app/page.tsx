@@ -1,7 +1,7 @@
 import QRCode from 'react-qr-code'
 import { Carteirinha } from './components/carteirinha'
 
-export const revalidate = 60 * 60 // 1 hour
+export const fetchCache = 'force-no-store'
 
 export default function Home() {
   const url = process.env.VERCEL_URL || 'localhost:3000'
