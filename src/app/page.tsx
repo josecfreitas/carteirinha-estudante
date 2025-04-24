@@ -1,23 +1,23 @@
-import QRCode from 'react-qr-code'
-import { Carteirinha } from './components/carteirinha'
+import { Carteirinha } from "@/components/carteirinha";
+import QRCode from "react-qr-code";
 
 // no-cache
-export const revalidate = 0
+export const revalidate = 0;
 
 export default function Home() {
-  const url = process.env.VERCEL_URL || 'localhost:3000'
-  const protocol = url.startsWith('localhost') ? 'http' : 'https'
-  const validacaoURL = `${protocol}://${url}/validacao?codigo-verificacao=${process.env.CODIGO_VERIFICACAO}`
+  const url = process.env.VERCEL_URL || "localhost:3000";
+  const protocol = url.startsWith("localhost") ? "http" : "https";
+  const validacaoURL = `${protocol}://${url}/validacao?codigo-verificacao=${process.env.CODIGO_VERIFICACAO}`;
 
   return (
     <main className="px-4">
-      <h1 className="text-[#073f60] text-center text-xl font-bold my-6">
+      <h1 className="my-6 text-center text-xl font-bold text-[#073f60]">
         Carterinha de Estudante
       </h1>
       <Carteirinha />
 
       <div className="text-center">
-        <h2 className="text-[#073f60] text-xl font-bold mt-8 mb-4">
+        <h2 className="mt-8 mb-4 text-xl font-bold text-[#073f60]">
           Validação
         </h2>
         <p>
@@ -26,17 +26,17 @@ export default function Home() {
         <a
           href={validacaoURL}
           target="_blank"
-          className="block m-auto w-fit my-4"
+          className="m-auto my-4 block w-fit"
         >
           <QRCode value={validacaoURL} className="h-48 w-48" />
         </a>
 
-        <p className="border w-fit m-auto p-4 rounded-lg border-gray-300 text-xs max-w-sm">
+        <p className="m-auto w-fit max-w-sm rounded-lg border border-gray-300 p-4 text-xs">
           <a href={validacaoURL} target="_blank">
             {validacaoURL}
           </a>
         </p>
       </div>
     </main>
-  )
+  );
 }

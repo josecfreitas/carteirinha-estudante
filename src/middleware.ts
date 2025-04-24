@@ -1,26 +1,43 @@
-import { NextRequest, NextResponse } from 'next/server'
+// middleware.ts
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
+// Pull your credentials from env
+const AUTH_USER = process.env.BASIC_AUTH_USER;
+const AUTH_PASS = process.env.BASIC_AUTH_PASSWORD;
+
+// Apply middleware to every path
 export const config = {
-  matcher: ['/'],
-}
+  matcher: ["/"],
+};
 
-export function middleware(req: NextRequest) {
-  const basicAuth = req.headers.get('authorization')
-  const url = req.nextUrl
+export function middleware(request: NextRequest) {
+  const authHeader = request.headers.get("authorization");
 
-  if (basicAuth) {
-    const authValue = basicAuth.split(' ')[1]
-    const [username, password] = atob(authValue).split(':')
-
-    const validUsername = process.env.BASIC_AUTH_USER
-    const validPassword = process.env.BASIC_AUTH_PASSWORD
-
-    if (username === validUsername && password === validPassword) {
-      return NextResponse.next()
-    }
+  // If no Authorization header, ask for credentials
+  if (!authHeader) {
+    return new NextResponse("Authentication required", {
+      status: 401,
+      headers: { "WWW-Authenticate": 'Basic realm="Secure Area"' },
+    });
   }
 
-  url.pathname = '/api/auth'
+  // Decode “Basic base64(user:pass)”
+  const [scheme, encoded] = authHeader.split(" ");
+  if (scheme !== "Basic" || !encoded) {
+    return new NextResponse("Bad authorization header", { status: 400 });
+  }
 
-  return NextResponse.rewrite(url)
+  const [user, pass] = Buffer.from(encoded, "base64").toString().split(":");
+
+  // Verify credentials
+  if (user === AUTH_USER && pass === AUTH_PASS) {
+    return NextResponse.next();
+  }
+
+  // Wrong creds → challenge again
+  return new NextResponse("Invalid credentials", {
+    status: 401,
+    headers: { "WWW-Authenticate": 'Basic realm="Secure Area"' },
+  });
 }

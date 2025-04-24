@@ -1,22 +1,18 @@
-import { Carteirinha } from '../components/carteirinha'
-import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa'
+import { Carteirinha } from "@/components/carteirinha";
+import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import { PageProps } from "@/lib/page-props";
 
 // no-cache
-export const revalidate = 0
+export const revalidate = 0;
 
-interface PageProps {
-  searchParams?: {
-    'codigo-verificacao'?: string
-  }
-}
-
-export default function Validacao({ searchParams }: PageProps) {
-  const codigoVerificacao = searchParams?.['codigo-verificacao']
-  const isValid = codigoVerificacao === process.env.CODIGO_VERIFICACAO
+export default async function Validacao({ searchParams }: PageProps<unknown>) {
+  const { "codigo-verificacao": codigoVerificacao } =
+    (await searchParams) || {};
+  const isValid = codigoVerificacao === process.env.CODIGO_VERIFICACAO;
 
   return (
     <main className="px-4">
-      <h1 className="text-[#073f60] text-center text-2xl font-bold my-6">
+      <h1 className="my-6 text-center text-2xl font-bold text-[#073f60]">
         Carterinha de Estudante
       </h1>
 
@@ -27,7 +23,7 @@ export default function Validacao({ searchParams }: PageProps) {
       )}
 
       <div className="text-center">
-        <h2 className="text-[#073f60] text-xl font-bold mt-8 mb-4">
+        <h2 className="mt-8 mb-4 text-xl font-bold text-[#073f60]">
           Validação
         </h2>
         {isValid ? (
@@ -45,11 +41,11 @@ export default function Validacao({ searchParams }: PageProps) {
             </p>
           </>
         )}
-        <p className="border w-fit m-auto p-4 rounded-lg border-gray-300">
-          Código de Verificação:{' '}
+        <p className="m-auto w-fit rounded-lg border border-gray-300 p-4">
+          Código de Verificação:{" "}
           <span className="italic">{codigoVerificacao}</span>
         </p>
       </div>
     </main>
-  )
+  );
 }
