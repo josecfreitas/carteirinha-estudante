@@ -5,13 +5,12 @@ import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 export const revalidate = 0;
 
 interface PageProps {
-  searchParams?: {
-    "codigo-verificacao"?: string;
-  };
+  params: Promise<{ "codigo-verificacao": string }>;
 }
 
-export default function Validacao({ searchParams }: PageProps) {
-  const codigoVerificacao = searchParams?.["codigo-verificacao"];
+export default async function Validacao({ params }: PageProps) {
+  const resolvedParams = await params;
+  const codigoVerificacao = resolvedParams?.["codigo-verificacao"];
   const isValid = codigoVerificacao === process.env.CODIGO_VERIFICACAO;
 
   return (
