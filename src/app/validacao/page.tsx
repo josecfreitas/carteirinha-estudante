@@ -1,16 +1,12 @@
 import { Carteirinha } from "@/components/carteirinha";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import { PageProps } from "@/lib/page-props";
 
 // no-cache
 export const revalidate = 0;
 
-interface PageProps {
-  params: Promise<{ "codigo-verificacao": string }>;
-}
-
-export default async function Validacao({ params }: PageProps) {
-  const resolvedParams = await params;
-  const codigoVerificacao = resolvedParams?.["codigo-verificacao"];
+export default async function Validacao({ searchParams }: PageProps<unknown>) {
+  const { "codigo-verificacao": codigoVerificacao } = searchParams || {};
   const isValid = codigoVerificacao === process.env.CODIGO_VERIFICACAO;
 
   return (
