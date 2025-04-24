@@ -6,7 +6,8 @@ import { PageProps } from "@/lib/page-props";
 export const revalidate = 0;
 
 export default async function Validacao({ searchParams }: PageProps<unknown>) {
-  const { "codigo-verificacao": codigoVerificacao } = searchParams || {};
+  const { "codigo-verificacao": codigoVerificacao } =
+    (await searchParams) || {};
   const isValid = codigoVerificacao === process.env.CODIGO_VERIFICACAO;
 
   return (
