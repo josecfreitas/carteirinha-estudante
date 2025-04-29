@@ -2,6 +2,9 @@ import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 
+// no-cache
+export const revalidate = 0;
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const viewport: Viewport = {
