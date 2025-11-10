@@ -8,7 +8,7 @@ const AUTH_PASS = process.env.BASIC_AUTH_PASSWORD;
 
 // Apply middleware to every path
 export const config = {
-  matcher: ["/"],
+  matcher: ["/", "/jose"],
 };
 
 export function middleware(request: NextRequest) {

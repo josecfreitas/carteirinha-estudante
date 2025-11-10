@@ -15,6 +15,15 @@ const students = {
     shift: "Noturno",
     registration: "12377718",
   },
+  giovanna: {
+    name: "Giovanna Marques Guarnieri",
+    cpf: "432.964.578-52",
+    birthDate: "23/02/1999",
+    course: "Pós-Graduação - Enfermagem do Trabalho",
+    semester: "Pós",
+    shift: "Livre",
+    registration: "12388818",
+  },
   jose: {
     name: "José Carlos de Freitas",
     cpf: "423.734.998-51",
