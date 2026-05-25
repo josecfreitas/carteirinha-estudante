@@ -6,6 +6,15 @@ import { twMerge } from "tailwind-merge";
 export type StudentSlug = keyof typeof students;
 
 const students = {
+  alexandre: {
+    name: "Alexandre Eduardo Fermino",
+    cpf: "415.997.268-31",
+    birthDate: "22/09/1990",
+    course: "Pós-Graduação - Artes Cênicas",
+    semester: "Pós",
+    shift: "Livre",
+    registration: "12388819",
+  },
   felipe: {
     name: "Felipe Dias Ribeiro",
     cpf: "386.189.978-70",
